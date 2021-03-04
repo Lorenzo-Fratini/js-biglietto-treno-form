@@ -1,7 +1,8 @@
 var userAge = prompt('Quanti anni hai?');
 var travelKm = prompt('Quanti km devi percorrere?');
-
-// console.log(userAge, travelKm);
+var priceKm = 0.21;
+var price = priceKm * travelKm;
+var discount = '';
 
 document.getElementById('age').innerHTML = userAge + ' anni';
 
@@ -9,26 +10,17 @@ document.getElementById('distance').innerHTML = travelKm + 'km';
 
 if (userAge < 18){
 
-  var price = ((0.21 * travelKm) / 5) * 4;
-
-  // console.log(price);
-
-  document.getElementById('discount').innerHTML = '20%';
-
+  price = (price / 5) * 4;
+  discount = '20%';
 } else if (userAge >= 65){
 
-  var price = ((0.21 * travelKm) / 5) * 3;
-
-  // console.log(price);
-
-  document.getElementById('discount').innerHTML = '40%';
+  price = (price / 5) * 3;
+  discount = '40%';
 } else {
 
-  var price = (0.21 * travelKm);
-
-  // console.log(price);
-
-  document.getElementById('discount').innerHTML = '0%';
+  discount = '0%';
 }
+
+document.getElementById('discount').innerHTML = discount;
 
 document.getElementById('price').innerHTML = price.toFixed(2) + '€';
